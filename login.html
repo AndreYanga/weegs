@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">   
+<link rel="https://fonts.googleapis.com/css?family=Sarabum" rel="stylesheet">
+<title>WEEG - Criar Conta</title>
+<link rel="stylesheet" href="loginScreen.css">
+</head>
+<body>
+
+        <div class = "logo">
+            <a href="home.html"><h2><img src="logoWeeng.png"></h2>
+        </a>
+        </div>
+
+        <div class="loginForm">
+            <h2 class="loginMsg1">Login</h2>
+            <p class="loginMsg2">Preencha os campos abaixo!</p>
+
+            <div class="form">
+             
+               <span class="email">Email</span>     
+               <input type="text" name="email" id="email" placeholder="Digite o email">
+
+                <span class="palavraPasse">Palavra-passe</span>
+                <input type="password" id="password" name="password" placeholder="password">
+
+                <button type="submit" id="Entrar" class="Criarconta">Entrar</button> 
+            </div>    
+
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js";
+    import { getDatabase, update, ref } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-database.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js";
+
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCUw_TMclGxmo3HXbi5kkTI2GQRbLlNSlo",
+      authDomain: "weggs-49654.firebaseapp.com",
+      databaseURL: "https://weggs-49654-default-rtdb.firebaseio.com",
+      projectId: "weggs-49654",
+      storageBucket: "weggs-49654.appspot.com",
+      messagingSenderId: "385464315561",
+      appId: "1:385464315561:web:75cd2d0150c7c6eed403b8"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+    const auth = getAuth();
+    const saveDataButton = document.getElementById('Entrar');
+
+    saveDataButton.addEventListener('click', (e) => {
+
+        var email = document.getElementById('email').value;
+        var password = document.getElementById('password').value;
+    
+
+        signInWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+                const dt = new Date();
+                update(ref(database, 'users/' + user.uid ),
+                {
+                    last_login: dt,
+                })
+                alert('login feito como sucesso!')
+                window.location.replace("home.html");
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                alert('Senha ou email invalido')
+            });
+           
+
+    })
+  </script>
+</body>
+
+
+
+</html>

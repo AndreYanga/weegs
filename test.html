@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">   
+<link rel="https://fonts.googleapis.com/css?family=Sarabum" rel="stylesheet">
+<title>WEEG - Criar Conta</title>
+</head>
+<body>
+                <input class="txt" type="text" name="nome" id="nome" placeholder="Digite o nome">
+               
+             
+                <input type="text" name="email" id="email" placeholder="Digite o email">
+          
+           
+            
+                <input type="password" id="password" name="password" placeholder="password">
+          
+                <button type="submit" id="saveData" class="Criarconta">Criar</button>
+
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js";
+    import { getDatabase } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-database.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js";
+
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCUw_TMclGxmo3HXbi5kkTI2GQRbLlNSlo",
+      authDomain: "weggs-49654.firebaseapp.com",
+      databaseURL: "https://weggs-49654-default-rtdb.firebaseio.com",
+      projectId: "weggs-49654",
+      storageBucket: "weggs-49654.appspot.com",
+      messagingSenderId: "385464315561",
+      appId: "1:385464315561:web:75cd2d0150c7c6eed403b8"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+    const auth = getAuth();
+    const saveDataButton = document.getElementById('saveData');
+
+    saveDataButton.addEventListener('click', (e) => {
+        console.log('Botão clicado!');
+        var email = document.getElementById('email').value;
+        var password = document.getElementById('password').value;
+        var nome = document.getElementById('nome').value;
+
+            createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                // Signed up 
+                const user = userCredential.user;
+                // ...
+                alert('deu certo!')
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // ..
+                alert(errorMessage)
+            });
+
+    })
+  </script>
+</body>
+
+
+
+</html>

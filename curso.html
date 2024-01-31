@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WEENG - Cursos</title>
+    <link rel="stylesheet" href="curso.css" />
+  </head>
+  <body>
+    <header>
+      <a href="home.html"><img
+        src="logoWeeng.png"
+        alt="logo do weeng"
+        class="logo"
+    /></a>
+    <span>Cursos</span>
+    
+    </header>
+    <section>
+    
+    <div class="card-container">
+
+      <div class="card">
+        <img src="matematica.jpg" alt="">
+        <div class="card-content">
+          <h3>
+            Análise matemática
+          </h3>
+          <p>
+            Neste curso...
+          </p>
+          <a href="cadaCursos.html" class="btn">Obter curso</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="autocad.jpg" alt="">
+        <div class="card-content">
+          <h3>
+            Autocad para iniciantes
+          </h3>
+          <p>
+            Neste curso...
+          </p>
+          <a href="cadaCursos_1.html" class="btn">Obter curso</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="desenho.jpg" alt="">
+        <div class="card-content">
+          <h3>
+            Desenho técnico
+          </h3>
+          <p>
+            Não esta disponivel...
+          </p>
+          <a href="#" class="btn">Obter curso</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="civil3d.jpg" alt="">
+        <div class="card-content">
+          <h3>
+            Civil 3D
+          </h3>
+          <p>
+            Não esta disponivel...
+          </p>
+          </p>
+          <a href="#" class="btn">Obter curso</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="m3.jpg" alt="">
+        <div class="card-content">
+          <h3>
+            Planeamento e gestão de obras
+          </h3>
+          <p>
+            Neste curso...
+          </p>
+          <a href="cadaCursos_4.html" class="btn">Obter curso</a>
+        </div>
+      </div>
+      <div class="card">
+        <img src="revit.jpg" alt="">
+        <div class="card-content">
+          <h3>
+            Revit
+          </h3>
+          <p>
+            Neste curso...
+          </p>
+          <a href="cadaCursos_5.html" class="btn">Obter curso</a>
+        </div>
+      </div>
+    </div>
+  </section> 
+   
+  <script type="module">
+    import { getAuth } from "firebase/auth";
+  </script>
+
+<script>
+  const auth = getAuth();
+  
+  auth.onAuthStateChanged((user) => {
+    if (user) {
+      // O usuário está logado
+      // Mostre os cursos
+      const cardContainers = document.querySelectorAll(".card-container .card");
+      cardContainers.forEach((cardContainer) => cardContainer.style.display = "block");
+    } else {
+      // O usuário não está logado
+      // Esconda os cursos e exiba um aviso de login
+      const cardContainers = document.querySelectorAll(".card-container .card");
+      cardContainers.forEach((cardContainer) => cardContainer.style.display = "none");
+      const loginMessage = document.createElement("p");
+      loginMessage.textContent = "Por favor, realize o login para visualizar os cursos.";
+      document.querySelector("section").appendChild(loginMessage);
+    }
+  });
+  </script>
+  
+  </body>
+</html>
