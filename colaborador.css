@@ -60,7 +60,7 @@ header {
 
 .conf .conf-img img {
   width: 1500px;
-  height: 600px;
+  height: 1100px;
   margin-left: -20px;
   display: flex;
   align-items: center;
@@ -80,7 +80,7 @@ header {
 
 .conf p {
   position: absolute;
-  margin-top: -470px;
+  margin-top: -950px;
   margin-left: 150px;
   
  
@@ -89,30 +89,7 @@ header {
   font-size: 20px;
 }
 
-.dev {
-  margin-top: -25px;
-  margin-left: -50px;
-}
 
-.dev .dev-img img {
-  width: 1500px;
-  height: 600px;
-  margin-left: -20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.dev p {
-  position: absolute;
-  margin-top: -500px;
-  margin-left: 150px;
-  
- 
-  text-align: justify;
-  color: #fff;
-  font-size: 20px;
-}
 
 
 
